@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_ALLOCATION97'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_ALLOCATION97'
+  }
+}
+define service ZUI_ALLOCATION_O497 provider contracts odata_v4_ui {
+  expose ZC_ALLOCATION97 as Allocation;
+}

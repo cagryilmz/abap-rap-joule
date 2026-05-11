@@ -1,0 +1,54 @@
+managed implementation in class ZBP_R_LEAVEREQUEST_97 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_LEAVEREQUEST_97 alias LeaveRequest
+persistent table ZLEAVEREQUEST_97
+extensible
+draft table ZLVEREQUEST_D_97
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+  validation validateDates on save { field BeginDate, EndDate; create; update; }
+  determination setInitialStatus on modify { create; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZLEAVEREQUEST_97 corresponding extensible
+  {
+    UUID = UUID;
+    LeaveRequestUUID = LEAVE_REQUEST_UUID;
+    EmployeeID = EMPLOYEE_ID;
+    EmployeeName = EMPLOYEE_NAME;
+    BeginDate = BEGIN_DATE;
+    EndDate = END_DATE;
+    LeaveType = LEAVE_TYPE;
+    Status = STATUS;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

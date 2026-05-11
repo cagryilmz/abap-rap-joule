@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_LEAVEREQUEST_97'
+@MappingRole: true
+define role ZC_LEAVEREQUEST_97 {
+  grant select on ZC_LEAVEREQUEST_97
+  where INHERITING CONDITIONS FROM ENTITY ZR_LEAVEREQUEST_97 REPLACING { ROOT WITH _BaseEntity };
+}

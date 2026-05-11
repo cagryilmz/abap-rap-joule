@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_LEAVEREQUEST_97'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_LEAVEREQUEST_97'
+  }
+}
+define service ZUI_LEAVEREQUEST_O4_97 provider contracts odata_v4_ui {
+  expose ZC_LEAVEREQUEST_97 as LeaveRequest;
+}
