@@ -11,6 +11,7 @@ lock master total etag LastChangedAt
 authorization master( global )
 {
   field ( readonly )
+   Status,
    UUID,
    LocalCreatedBy,
    LocalCreatedAt,
@@ -25,6 +26,9 @@ authorization master( global )
   create;
   update;
   delete;
+
+  validation validateAllocation on save { field begindate, enddate, quantity; create; update; }
+  determination setInitialStatus on modify { create; }
 
   draft action Activate optimized;
   draft action Discard;
